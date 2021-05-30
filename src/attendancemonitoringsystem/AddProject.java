@@ -197,7 +197,11 @@ public class AddProject extends javax.swing.JFrame {
         String projectDepartment = department.getText();
         String projectStatus = status.getText();
         
-        try{
+       if((title.equals("")) && (projectDepartment.equals("")) && (projectStatus.equals(""))){
+            JOptionPane.showMessageDialog(null, "Please input all fields","Alert", JOptionPane.WARNING_MESSAGE);
+          
+       } else{
+           try{
             Class.forName("com.mysql.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/attendancemsfjava", "root","");
             Statement stmt = (Statement) con.createStatement();
@@ -205,9 +209,11 @@ public class AddProject extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null,"Successfully added!");
             this.setVisible(false);
             new Dashboard().setVisible(true);
-        }catch (Exception e){
-            JOptionPane.showMessageDialog(null, e.getMessage(),"Alert", JOptionPane.WARNING_MESSAGE);
-        }
+            }catch (Exception e){
+                JOptionPane.showMessageDialog(null, e.getMessage(),"Alert", JOptionPane.WARNING_MESSAGE);
+            }
+       }
+        
     }//GEN-LAST:event_saveActionPerformed
 
     private void save1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_save1ActionPerformed

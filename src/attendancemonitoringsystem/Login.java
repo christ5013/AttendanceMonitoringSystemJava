@@ -155,6 +155,8 @@ public class Login extends javax.swing.JFrame {
                 new Dashboard().setVisible(true);
             }else{
                 JOptionPane.showMessageDialog(null, "USERNAME and PASSWORD did not match for ADMIN","Alert", JOptionPane.WARNING_MESSAGE);
+                usernameField.setText("");
+                passwordField.setText("");
             }
     }//GEN-LAST:event_loginBtnActionPerformed
 

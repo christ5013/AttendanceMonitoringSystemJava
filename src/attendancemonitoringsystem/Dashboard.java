@@ -499,13 +499,14 @@ public class Dashboard extends javax.swing.JFrame {
         
          DefaultTableModel model = (DefaultTableModel) table.getModel();
         int row = table.getSelectedRow(); 
-        ID = model.getValueAt(row,1).toString();  
+        ID = model.getValueAt(row,0).toString();  
+        System.out.println("if: " + ID);
        
      try{
              Class.forName("com.mysql.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/attendancemsfjava","root","");
             Statement stmt = con.createStatement(); 
-            ResultSet datas = stmt.executeQuery("SELECT * FROM projects WHERE project_title = '"+ID+"'");        
+            ResultSet datas = stmt.executeQuery("SELECT * FROM projects WHERE project_id = '"+ID+"'");        
            
                 System.out.println("result " + datas.next());
             String title = datas.getString("project_title");
@@ -516,8 +517,8 @@ public class Dashboard extends javax.swing.JFrame {
             up.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         
             up.titleProject.setText(title);
-            up.department.setText(department);
-            up.status.setText(status);
+            up.projectDepartment.setText(department);
+            up.projectStatus.setText(status);
             this.setVisible(false);
             up.setVisible(true);
             

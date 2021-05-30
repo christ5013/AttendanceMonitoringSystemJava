@@ -289,7 +289,7 @@ public class AddEmployee extends javax.swing.JFrame {
         String firstname = fname.getText();
         String middlename = mname.getText();
         String lastname =lname.getText();
-        String age = agefield.getText();
+        int age = Integer.parseInt(agefield.getText());
         String mobile = mobilenumber.getText();
         String department = departmentfield.getText();
         String position = positionfield.getText();
